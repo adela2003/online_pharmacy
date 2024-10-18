@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <link rel="icon" href="image/favicon.png" type="image/png" />
+    <title>HealthHub Pharmacy</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Montserrat", sans-serif;
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
+      :root {
+        --main-bg-color: #53b620;
+        --main-text-color: #53b620;
+        --second-text-color: #898989;
+        --second-bg-color: #c5ffa9;
+      }
+      .logo1 {
+        width: 70px;
+        height: 70px;
+      }
+      .primary-text {
+        color: var(--main-text-color);
+      }
+
+      .second-text {
+        color: var(--second-text-color);
+      }
+
+      .primary-bg {
+        background-color: var(--main-bg-color);
+      }
+
+      .secondary-bg {
+        background-color: var(--second-bg-color);
+      }
+
+      .rounded-full {
+        border-radius: 100%;
+      }
+
+      #wrapper {
+        overflow-x: hidden;
+        background-image: linear-gradient(135deg, #f2f2f2, #137bb8);
+      }
+
+      #sidebar-wrapper {
+        min-height: 100vh;
+        margin-left: -15rem;
+        -webkit-transition: margin 0.25s ease-out;
+        -moz-transition: margin 0.25s ease-out;
+        -o-transition: margin 0.25s ease-out;
+        transition: margin 0.25s ease-out;
+      }
+
+      #sidebar-wrapper .sidebar-heading {
+        padding: 0.875rem 1.25rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+      #sidebar-wrapper .sidebar-heading span {
+        color: #137bb8;
+        font-weight: 600;
+      }
+      #sidebar-wrapper .list-group {
+        width: 15rem;
+      }
+
+      #page-content-wrapper {
+        min-width: 100vw;
+      }
+
+      #wrapper.toggled #sidebar-wrapper {
+        margin-left: 0;
+      }
+
+      #menu-toggle {
+        cursor: pointer;
+      }
+
+      .list-group-item {
+        border: none;
+        padding: 20px 30px;
+      }
+
+      .list-group-item.active {
+        background-color: transparent;
+        color: #53b620;
+        font-weight: bold;
+        border: none;
+      }
+
+      .btn-sm {
+        margin: 4px;
+      }
+      .table {
+        background: rgba(255, 255, 255, 0.2) !important;
+        border-radius: 16px !important;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        overflow-x: auto;
+      }
+      td,
+      th {
+        padding: 3px !important;
+        text-align: center !important;
+      }
+      .card {
+        /* From https://css.glass */
+        background: rgba(255, 255, 255, 0.27);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(7px);
+        -webkit-backdrop-filter: blur(7px);
+        border: 1px solid rgba(255, 255, 255, 0.26);
+      }
+      .bg-white {
+        /* From https://css.glass */
+        background: rgba(173, 172, 172, 0.2) !important;
+        border-radius: 16px !important;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      }
+      .form-select {
+        width: 10vw;
+        font-size: 16px;
+        padding: 8px;
+      }
+
+      /* تنظیم استایل برای موبایل */
+      @media (max-width: 576px) {
+        .form-select {
+          width: 23vw;
+          font-size: 14px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        #sidebar-wrapper {
+          margin-left: 0;
+        }
+
+        #page-content-wrapper {
+          min-width: 0;
+          width: 100%;
+        }
+
+        #wrapper.toggled #sidebar-wrapper {
+          margin-left: -15rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="d-flex" id="wrapper">
+      <!-- Sidebar -->
+      <div class="bg-white" id="sidebar-wrapper">
+        <div
+          class="sidebar-heading text-center py-4 primary-text fs-4 border-bottom"
+        >
+          <img src="image/img-6.png" class="logo1" alt="logo" />Health<span
+            >Hub</span
+          >
+        </div>
+        <div class="list-group list-group-flush my-3">
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-transparent second-text active"
+            ><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a
+          >
+          <a
+            href="order-mng.html"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            ><i class="fas fa-project-diagram me-2"></i>Order mng</a
+          >
+          <a
+            href="user-mng.html"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            ><i class="fas fa-chart-line me-2"></i>User mng</a
+          >
+          <a
+            href="medicine-mng.html"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            ><i class="fas fa-paperclip me-2"></i>Medicine mng</a
+          >
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            ><i class="fas fa-shopping-cart me-2"></i>Shopping Mng</a
+          >
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            ><i class="fas fa-gift me-2"></i>Products</a
+          >
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            ><i class="fas fa-comment-dots me-2"></i>Chat</a
+          >
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            ><i class="fas fa-map-marker-alt me-2"></i>Outlet</a
+          >
+          <a
+            href="#"
+            class="logout list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+            ><i class="logout fas fa-power-off me-2"></i>Logout</a
+          >
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <nav
+          class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4"
+        >
+          <div class="d-flex align-items-center">
+            <i
+              class="fas fa-align-left primary-text fs-4 me-3"
+              id="menu-toggle"
+            ></i>
+            <h2 class="fs-2 m-0">Dashboard</h2>
+          </div>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle second-text fw-bold"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-user me-2"></i>John Doe
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="#">Settings</a></li>
+                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="container-fluid px-4">
+          <div class="row g-3 my-2">
+            <div class="col-lg-3 col-md-6">
+              <div
+                class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded card"
+              >
+                <div>
+                  <h3 class="fs-2">1200</h3>
+                  <p class="fs-5">ُTotal 6rders</p>
+                </div>
+                <i
+                  class="fas fa-box fs-1 primary-text border rounded-full secondary-bg p-3"
+                ></i>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+              <div
+                class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded card"
+              >
+                <div>
+                  <h3 class="fs-2">700</h3>
+                  <p class="fs-5">Pending Orders</p>
+                </div>
+                <i
+                  class="fas fa-hourglass-half fs-1 primary-text border rounded-full secondary-bg p-3"
+                ></i>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+              <div
+                class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded card"
+              >
+                <div>
+                  <h3 class="fs-2">300</h3>
+                  <p class="fs-5">Delivered Orders</p>
+                </div>
+                <i
+                  class="fas fa-check-circle fs-1 primary-text border rounded-full secondary-bg p-3"
+                ></i>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+              <div
+                class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded card"
+              >
+                <div>
+                  <h3 class="fs-2">100</h3>
+                  <p class="fs-5">Canceled Orders</p>
+                </div>
+                <i
+                  class="fas fa-times-circle fs-1 primary-text border rounded-full secondary-bg p-3"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid px-4">
+          <div class="row my-5">
+            <h3 class="fs-4 mb-3">Order Management</h3>
+            <div class="col">
+              <div class="table-responsive">
+                <table class="table bg-white rounded shadow-sm table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col" width="50">#</th>
+                      <th scope="col">Order ID</th>
+                      <th scope="col">Customer</th>
+                      <th scope="col">Total Price</th>
+
+                      <th scope="col">Status</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>#001234</td>
+                      <td>Jonny</td>
+                      <td>$1200</td>
+
+                      <td>
+                        <select class="form-select">
+                          <option selected>Processing</option>
+                          <option>Shipped</option>
+                          <option>Delivered</option>
+                          <option>Canceled</option>
+                        </select>
+                      </td>
+                      <td>
+                        <i
+                          class="fas fa-edit text-warning"
+                          style="cursor: pointer"
+                        ></i>
+                        <i
+                          class="fas fa-trash text-danger"
+                          style="cursor: pointer; margin-left: 10px"
+                        ></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>#001235</td>
+                      <td>Kenny</td>
+                      <td>$750</td>
+
+                      <td>
+                        <select class="form-select">
+                          <option selected>Processing</option>
+                          <option>Shipped</option>
+                          <option>Delivered</option>
+                          <option>Canceled</option>
+                        </select>
+                      </td>
+                      <td>
+                        <i
+                          class="fas fa-edit text-warning"
+                          style="cursor: pointer"
+                        ></i>
+                        <i
+                          class="fas fa-trash text-danger"
+                          style="cursor: pointer; margin-left: 10px"
+                        ></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>#001267</td>
+                      <td>Lorna</td>
+                      <td>$900</td>
+
+                      <td>
+                        <select class="form-select">
+                          <option selected>Processing</option>
+                          <option>Shipped</option>
+                          <option>Delivered</option>
+                          <option>Canceled</option>
+                        </select>
+                      </td>
+                      <td>
+                        <i
+                          class="fas fa-edit text-warning"
+                          style="cursor: pointer"
+                        ></i>
+                        <i
+                          class="fas fa-trash text-danger"
+                          style="cursor: pointer; margin-left: 10px"
+                        ></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>#001245</td>
+                      <td>Sarah</td>
+                      <td>$2150</td>
+
+                      <td>
+                        <select class="form-select">
+                          <option selected>Processing</option>
+                          <option>Shipped</option>
+                          <option>Delivered</option>
+                          <option>Canceled</option>
+                        </select>
+                      </td>
+                      <td>
+                        <i
+                          class="fas fa-edit text-warning"
+                          style="cursor: pointer"
+                        ></i>
+                        <i
+                          class="fas fa-trash text-danger"
+                          style="cursor: pointer; margin-left: 10px"
+                        ></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>#001265</td>
+                      <td>Sodaa</td>
+                      <td>$1750</td>
+
+                      <td>
+                        <select class="form-select">
+                          <option selected>Processing</option>
+                          <option>Shipped</option>
+                          <option>Delivered</option>
+                          <option>Canceled</option>
+                        </select>
+                      </td>
+                      <td>
+                        <i
+                          class="fas fa-edit text-warning"
+                          style="cursor: pointer"
+                        ></i>
+                        <i
+                          class="fas fa-trash text-danger"
+                          style="cursor: pointer; margin-left: 10px"
+                        ></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>#001235</td>
+                      <td>Lazy</td>
+                      <td>$1900</td>
+
+                      <td>
+                        <select class="form-select">
+                          <option selected>Processing</option>
+                          <option>Shipped</option>
+                          <option>Delivered</option>
+                          <option>Canceled</option>
+                        </select>
+                      </td>
+                      <td>
+                        <i
+                          class="fas fa-edit text-warning"
+                          style="cursor: pointer"
+                        ></i>
+                        <i
+                          class="fas fa-trash text-danger"
+                          style="cursor: pointer; margin-left: 10px"
+                        ></i>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      var el = document.getElementById("wrapper");
+      var toggleButton = document.getElementById("menu-toggle");
+
+      toggleButton.onclick = function () {
+        el.classList.toggle("toggled");
+      };
+
+      //  وضعیت سفارش
+      document.querySelectorAll(".form-select").forEach((select) => {
+        select.addEventListener("change", () => {
+          alert(`Order status updated to: ${select.value}`);
+        });
+      });
+
+      // کدها برای حذف سطر
+      document.querySelectorAll(".fa-trash").forEach((icon) => {
+        icon.addEventListener("click", () => {
+          icon.closest("tr").remove();
+        });
+      });
+      // رفتن به صفحه اصلی با کلیک دکمه لاگ اوت
+      document.querySelector(".logout").onclick = function (event) {
+        event.preventDefault();
+        window.location.href = "index.html";
+      };
+    </script>
+  </body>
+</html>

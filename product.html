@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="icon" href="image/favicon.png" type="image/png" />
+    <title>HealthHub Pharmacy</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <style>
+      /* background: linear-gradient(135deg, #f8f7f7, #f2f7fb); */
+      body {
+        background-image: url("image/background.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+        font-family: "Montserrat", sans-serif;
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
+
+      .navbar {
+        background-color: #e0dede;
+        height: 88px;
+        margin: 13px;
+        border-radius: 18px;
+        padding: 0.2rem;
+        position: relative;
+      }
+      .logo1 {
+        width: 90px;
+        height: 90px;
+      }
+      .logo {
+        width: 90px;
+        height: 90px;
+        margin-left: 25px;
+      }
+      .user-icon {
+        font-size: 25px;
+        color: #53b620;
+        margin: 5px;
+      }
+      .shop-icon {
+        width: 35px;
+        height: 35px;
+      }
+      .dropdown-toggle::after {
+        display: none !important;
+      }
+      .offcanvas-title {
+        font-weight: 700;
+        font-size: 20px;
+        color: #53b620;
+      }
+      .navbar-brand {
+        font-weight: 600;
+        -webkit-text-stroke: 0.5px #252525;
+        color: #53b620;
+        font-size: 18px;
+        transition: 0.3s color;
+      }
+
+      span {
+        font-weight: 600;
+        color: #1398e4;
+      }
+      .login-button {
+        background-image: linear-gradient(55deg, #137bb8, #53b620);
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 10px 12px;
+        border-radius: 40px;
+        text-decoration: none;
+        transition: 0.3s background-image;
+      }
+      .login-button:hover {
+        background-image: linear-gradient(55deg, #53b620, #137bb8);
+        color: #252525;
+      }
+
+      .navbar-toggler {
+        border: none;
+        font-size: 1.25rem;
+      }
+      .navbar-toggler:focus,
+      .btn-close:focus {
+        box-shadow: none;
+        outline: none;
+      }
+      @media (max-width: 460px) {
+        /* کوچکتر کردن دکمه .navbar-toggler */
+        .navbar-brand {
+          font-size: 12px;
+        }
+        .navbar-toggler {
+          width: 30px;
+          height: 30px;
+          font-size: 0.8rem;
+        }
+        .logo1 {
+          width: 60px;
+          height: 60px;
+        }
+        .navbar-toggler-icon {
+          width: 20px;
+          height: 20px;
+        }
+        .login-button {
+          font-size: 9px;
+          padding: 5px 10px;
+        }
+
+        .user-icon {
+          font-size: 14px;
+        }
+
+        .user-icon i {
+          font-size: 1rem;
+        }
+      }
+
+      .offcanvas {
+        backdrop-filter: blur(1px);
+        -webkit-backdrop-filter: blur(1px);
+        background-color: rgba(255, 255, 255, 0.619);
+      }
+
+      @media (max-width: 768px) {
+        .offcanvas {
+          backdrop-filter: blur(1px);
+          -webkit-backdrop-filter: blur(1px);
+          background-color: rgba(255, 255, 255, 0.619);
+        }
+      }
+
+      .nav-link {
+        color: #137bb8;
+        font-weight: 700;
+        position: relative;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: #60cd27;
+      }
+      @media (min-width: 991px) {
+        .nav-link::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 2px;
+          background-color: #53b620;
+          visibility: hidden;
+          transition: 0.3s ease-in-out;
+        }
+        .nav-link:hover::before,
+        .nav-link.active::before {
+          width: 100%;
+          visibility: visible;
+        }
+      }
+      /*Styles For Product Section */
+
+      .product-hero-section {
+        background: linear-gradient(135deg, #f5f7fa, #53b620);
+        padding: 100px 0;
+        margin: 15px;
+        backdrop-filter: blur(10px); /* Glass blur effect */
+        border-bottom-left-radius: 60% 15vw;
+        border-bottom-right-radius: 60% 15vw;
+        overflow: hidden;
+      }
+      .animated-shapes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .shape {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        backdrop-filter: blur(10px);
+        animation: move 10s infinite alternate ease-in-out;
+      }
+
+      /* Animation keyframes */
+      @keyframes move {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(100px, 200px);
+        }
+      }
+
+      /* Responsive Shapes */
+      .shape:nth-child(1) {
+        top: 10%;
+        left: 20%;
+      }
+
+      .shape:nth-child(2) {
+        top: 50%;
+        left: 40%;
+      }
+
+      .shape:nth-child(3) {
+        top: 80%;
+        left: 60%;
+      }
+
+      .product-hero-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 900;
+        background: linear-gradient(90deg, #53b620, #137bb8);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+        animation: floatText 4s ease-in-out infinite;
+      }
+
+      .product-hero-text {
+        font-size: clamp(1rem, 3vw, 1.4rem);
+        color: #666;
+        margin-bottom: 40px;
+        line-height: 1.7;
+      }
+
+      .product-cta-button {
+        padding: 12px 20px;
+        margin: 10px;
+        color: #333;
+        border: solid 4px #53b620;
+        border-radius: 50px;
+        text-transform: uppercase;
+        font-size: clamp(0.8rem, 3vw, 1.2rem);
+        font-weight: bold;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .product-cta-button:hover {
+        color: #f2f2f2;
+        background: linear-gradient(90deg, #53b620, #137bb8);
+      }
+
+      .product-hero-image {
+        width: 100%;
+        height: auto;
+        opacity: 0.7;
+        animation: floatImage 5s ease-in-out infinite;
+      }
+
+      /* انیمیشن تصویر */
+      @keyframes floatImage {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(20px);
+        }
+      }
+
+      .filter-buttons button {
+        border-radius: 30px;
+        margin: 5px;
+      }
+
+      .search-bar {
+        padding: 20px;
+        margin: 20px auto;
+      }
+      .btn-search {
+        background-color: #53b620;
+        border: solid #53b620;
+        transition: transform 0.3s background-color;
+      }
+      .btn-search:hover {
+        border: solid #53b620;
+        background-color: #53b620;
+      }
+      .btn-filter {
+        border: solid #53b620;
+        transition: transform 0.3s background-color;
+      }
+      .btn-filter:hover {
+        border: solid #53b620;
+        background-color: #53b620;
+      }
+      @media (max-width: 768px) {
+        .product-card img {
+          max-height: 200px;
+        }
+      }
+      .title-product {
+        text-align: left;
+        font-size: 26px;
+        font-weight: 600;
+        color: #333;
+      }
+      .title-line {
+        width: 250px;
+        border: none;
+        height: 6px;
+        background-color: #53b620;
+      }
+      .img-product {
+        width: auto;
+        height: 40vh;
+      }
+
+      .product-cards {
+        border-radius: 10px;
+        padding: 20px;
+        background-color: #f8f9fa;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .product-cards h5 {
+        font-size: clamp(1rem, 2vw, 1.6rem);
+        font-weight: bold;
+        color: #333;
+      }
+
+      .product-cards p {
+        margin-bottom: 12px;
+        color: #555;
+      }
+
+      .big-card {
+        background-color: #fdece3;
+      }
+      .big-card img {
+        width: 70%;
+        height: 67vh;
+      }
+
+      .small-card-1 {
+        background-color: #e1f7e5;
+      }
+      .small-card-1 img {
+        width: 50%;
+        height: 30vh;
+      }
+      .small-card-2 img {
+        width: 50%;
+        height: 30vh;
+      }
+
+      .small-card-2 {
+        background-color: #fbe5cd;
+      }
+
+      .crd {
+        overflow: hidden;
+        position: relative;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+        background: rgba(255, 255, 255, 0.26);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        transition: all 0.3s ease;
+      }
+
+      .crd:hover {
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(20px);
+        box-shadow: -5px 5px #137bb8, -15px 15px 20px -10px #137bb8,
+          5px -5px #53b620, 5px -5px 20px #53b620;
+      }
+
+      .img-product {
+        width: 70%;
+        height: 40vh;
+        display: block;
+        margin: 0 auto;
+        transition: transform 0.3s ease;
+      }
+      .crd:hover .img-product {
+        transform: translateY(-20%);
+      }
+
+      .product-info {
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        background: #e5e5e5;
+        padding: 10px;
+        text-align: center;
+        transition: bottom 0.3s ease;
+      }
+
+      .crd:hover .product-info {
+        bottom: 0;
+      }
+
+      .btn-add-to-cart {
+        background-color: white;
+        color: #333;
+        border: solid #53b620;
+        border-radius: 20px;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: transform 0.3s background-color;
+      }
+      .btn-add-to-cart:hover {
+        color: white;
+        background-color: #53b620;
+      }
+
+      .cart-badge {
+        position: absolute;
+        top: -15px;
+        left: -6px;
+        color: #fff;
+        background-color: #137bb8;
+        border-radius: 50%;
+        padding: 4px 8px;
+        font-size: 14px;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      /*Styles For Footer Section */
+      footer {
+        position: relative;
+        background: #d8d8d8;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+      }
+      footer::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 100px;
+        height: 1px;
+        width: 100%;
+        background: #afafb6;
+      }
+      footer .content {
+        max-width: 1250px;
+        margin: auto;
+        padding: 30px 40px 40px 40px;
+      }
+      footer .content .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+      }
+      .content .top .logo-details {
+        width: 50px;
+        height: 50px;
+      }
+      .content .top .media-icons {
+        display: flex;
+      }
+      .content .top .media-icons a {
+        height: 40px;
+        width: 40px;
+        margin: 0 8px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+        font-size: 17px;
+        text-decoration: none;
+        transition: all 0.4s ease;
+      }
+      .top .media-icons a:nth-child(1) {
+        background: #4267b2;
+      }
+      .top .media-icons a:nth-child(1):hover {
+        color: #4267b2;
+        background: #fff;
+      }
+      .top .media-icons a:nth-child(2) {
+        background: #1da1f2;
+      }
+      .top .media-icons a:nth-child(2):hover {
+        color: #1da1f2;
+        background: #fff;
+      }
+      .top .media-icons a:nth-child(3) {
+        background: #e1306c;
+      }
+      .top .media-icons a:nth-child(3):hover {
+        color: #e1306c;
+        background: #fff;
+      }
+      .top .media-icons a:nth-child(4) {
+        background: #0077b5;
+      }
+      .top .media-icons a:nth-child(4):hover {
+        color: #0077b5;
+        background: #fff;
+      }
+      .top .media-icons a:nth-child(5) {
+        background: #ff0000;
+      }
+      .top .media-icons a:nth-child(5):hover {
+        color: #ff0000;
+        background: #fff;
+      }
+      footer .content .link-boxes {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      footer .content .link-boxes .box {
+        width: calc(100% / 5 - 10px);
+      }
+      .content .link-boxes .box .link_name {
+        color: #53b620;
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 10px;
+        position: relative;
+      }
+      .link-boxes .box .link_name::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        height: 2px;
+        width: 35px;
+        background: rgb(194, 193, 193);
+      }
+      .content .link-boxes .box li {
+        margin: 6px 0;
+        list-style: none;
+      }
+      .content .link-boxes .box li a {
+        color: #137bb8;
+        font-size: 14px;
+        font-weight: 400;
+        text-decoration: none;
+        opacity: 0.8;
+        transition: all 0.4s ease;
+      }
+      .content .link-boxes .box li a:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
+      .content .link-boxes .input-box {
+        margin-right: 55px;
+      }
+      .link-boxes .input-box input {
+        height: 40px;
+        width: calc(100% + 55px);
+        outline: none;
+        border: 2px solid #afafb6;
+        background: #eaeaea;
+        border-radius: 4px;
+        padding: 0 15px;
+        font-size: 15px;
+        color: #000000;
+        margin-top: 5px;
+      }
+      .link-boxes .input-box input::placeholder {
+        color: #afafb6;
+        font-size: 16px;
+      }
+      .link-boxes .input-box input[type="button"] {
+        background: #fff;
+        color: #3824d2;
+        border: none;
+        font-size: 18px;
+        font-weight: 500;
+        margin: 4px 0;
+        opacity: 0.8;
+        cursor: pointer;
+        transition: all 0.4s ease;
+      }
+      .input-box input[type="button"]:hover {
+        opacity: 1;
+      }
+      footer .bottom-details {
+        width: 100%;
+        background: #53b620;
+      }
+      footer .bottom-details .bottom_text {
+        max-width: 1250px;
+        margin: auto;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .bottom-details .bottom_text span,
+      .bottom-details .bottom_text a {
+        font-size: 14px;
+        font-weight: 300;
+        color: #fff;
+        opacity: 0.8;
+        text-decoration: none;
+      }
+      .bottom-details .bottom_text a:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
+      .bottom-details .bottom_text a {
+        margin-right: 10px;
+      }
+      @media (max-width: 900px) {
+        footer .content .link-boxes {
+          flex-wrap: wrap;
+        }
+        footer .content .link-boxes .input-box {
+          width: 40%;
+          margin-top: 10px;
+        }
+      }
+      @media (max-width: 700px) {
+        footer {
+          position: relative;
+        }
+        .content .top .logo-details {
+          font-size: 26px;
+        }
+        .content .top .media-icons a {
+          height: 35px;
+          width: 35px;
+          font-size: 14px;
+          line-height: 35px;
+        }
+        footer .content .link-boxes .box {
+          width: calc(100% / 3 - 10px);
+        }
+        footer .content .link-boxes .input-box {
+          width: 60%;
+        }
+        .bottom-details .bottom_text span,
+        .bottom-details .bottom_text a {
+          font-size: 12px;
+        }
+      }
+      @media (max-width: 520px) {
+        footer::before {
+          top: 145px;
+        }
+        footer .content .top {
+          flex-direction: column;
+        }
+        .content .top .media-icons {
+          margin-top: 16px;
+        }
+        footer .content .link-boxes .box {
+          width: calc(100% / 2 - 10px);
+        }
+        footer .content .link-boxes .input-box {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--this section is for navigation bar-->
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <img src="image/img-6.png" class="logo1" alt="logo" />
+        <a class="navbar-brand me-auto" href="#">Health<span>Hub</span></a>
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+              <img src="image/img-6.png" class="logo" alt="logo" />
+              Health<span>Hub</span>
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a
+                  class="nav-link mx-lg-2"
+                  aria-current="page"
+                  href="index.html"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-lg-2" href="about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-lg-2" href="order-mng.html">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-lg-2" href="product.html">Product</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-lg-2" href="contact.html">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="d-flex align-items-center position-relative">
+          <a href="shopping.html" class="position-relative"
+            ><lord-icon
+              class="shop-icon"
+              id="cart-icon"
+              src="https://cdn.lordicon.com/cosvjkbu.json"
+              trigger=""
+              delay="500"
+              colors="primary:#53b620,secondary:#646e78,tertiary:#3a3347"
+              style="width: 35px; height: 35px"
+            >
+            </lord-icon
+          ></a>
+          <span
+            id="cart-count"
+            class="cart-badge"
+            style="font-size: 14px; margin-left: 10px"
+            >0</span
+          >
+          <!-- نمایش تعداد محصولات -->
+          <a href="log.html" class="login-button">Login</a>
+          <div class="dropdown">
+            <a
+              href="#"
+              class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
+              id="dropdownUser1"
+              data-bs-toggle="dropdown"
+              aria-expanded="true"
+            >
+              <i class="fa-solid fa-user user-icon"></i>
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="dropdownUser1"
+            >
+              <li><a class="dropdown-item" href="user.html">Profile</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <button
+          class="navbar-toggler pe-0"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+      <section class="product-hero-section">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12">
+              <h1 class="product-hero-title">Discover Our Latest Products</h1>
+              <p class="product-hero-text">
+                Explore the best deals on our high-quality pharmaceutical
+                products. Your health is our top priority, and our products are
+                designed to meet all your healthcare needs.
+              </p>
+              <a href="#" class="product-cta-button">Shop Now</a>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <img
+                src="image/product-hero.webp"
+                alt="Product Image"
+                class="product-hero-image"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Animated Background Shapes -->
+        <div class="animated-shapes">
+          <div class="shape"></div>
+          <div class="shape"></div>
+          <div class="shape"></div>
+        </div>
+      </section>
+    </div>
+    <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+      <div class="container mt-5">
+        <div class="row">
+          <!-- Large Product Card -->
+          <div class="col-lg col-md-6 col-sm-12 mb-4">
+            <div
+              class="product-cards big-card d-flex align-items-center justify-content-between"
+            >
+              <div>
+                <h5>All Type of Skin & Hair Product</h5>
+                <p>Skin Care Product</p>
+              </div>
+              <img
+                src="image/big-product.webp"
+                alt="Makeup Products"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+
+          <div class="col-lg col-md-6 col-sm-12">
+            <!-- Small Product Card 1 -->
+            <div
+              class="product-cards d-flex align-items-center small-card-1 mb-4"
+            >
+              <div>
+                <h5>All Type Of Medicine Products</h5>
+                <p>Health Care Product</p>
+              </div>
+              <img src="image/small-pro1.webp" alt="" />
+            </div>
+            <!-- Small Product Card 2 -->
+            <div class="product-cards d-flex align-items-center small-card-2">
+              <div>
+                <h5>Dietary Supplements Vitamins</h5>
+                <p>Health Care Product</p>
+              </div>
+              <img src="image/small-pro2 (2).webp" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Section -->
+    <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+      <div class="container mt-5">
+        <div class="search-bar text-center">
+          <input
+            type="text"
+            class="form-control d-inline w-75"
+            id="search-input"
+            placeholder="Search the Product name..."
+          />
+          <button class="btn btn-search btn-success">Search</button>
+        </div>
+
+        <div class="filter-buttons text-center my-4">
+          <button
+            id="all-btn"
+            class="btn btn-filter btn-outline-success"
+            data-filter="all"
+          >
+            All
+          </button>
+          <button
+            id="medicine-btn"
+            class="btn btn-filter btn-outline-success"
+            data-filter="medicine"
+          >
+            Medicine
+          </button>
+          <button
+            id="vitamins-btn"
+            class="btn btn-filter btn-outline-success"
+            data-filter="vitamins"
+          >
+            Vitamins
+          </button>
+          <button
+            id="skins-btn"
+            class="btn btn-filter btn-outline-success"
+            data-filter="skins"
+          >
+            Skins
+          </button>
+          <button
+            id="popular-btn"
+            class="btn btn-filter btn-outline-success"
+            data-filter="popular"
+          >
+            Popular
+          </button>
+        </div>
+      </div>
+
+      <!--Medicine Products Section-->
+      <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+        <div class="container section p-5" id="medicine-section">
+          <br />
+          <div id="product-list" class="row">
+            <!-- Product Card 1 -->
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+              <div class="card crd" data-category="medicine">
+                <img
+                  src="image/medicine1.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Paracetamol</h5>
+                  <p class="card-text">$10.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    Paracetamol is commonly used for relieving mild to moderate
+                    pain, including headaches, muscle aches, and toothaches.
+                  </p>
+                  <button class="btn btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+              <div class="card crd" data-category="medicine">
+                <img
+                  src="image/medicine2.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Ibuprofen</h5>
+                  <p class="card-text">$12.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    Ibuprofen is an anti-inflammatory drug used to reduce pain,
+                    swelling, and fever. It is often recommended for conditions.
+                  </p>
+                  <button class="btn btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+              <div class="card crd" data-category="medicine">
+                <img
+                  src="image/medicine3.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Aspirin</h5>
+                  <p class="card-text">$8.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    Aspirin is used for pain relief, reducing inflammation, and
+                    lowering the risk of heart attacks and strokes.
+                  </p>
+                  <button class="btn btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+              <div class="card crd" data-category="medicine">
+                <img
+                  src="image/medicine4.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Amoxicillin</h5>
+                  <p class="card-text">$9.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    Amoxicillin is a commonly prescribed antibiotic that treats
+                    bacterial infections such as bronchitis, pneumonia.
+                  </p>
+                  <button class="btn btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="product-list" class="row">
+            <!-- Product Card 5 -->
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+              <div class="card crd" data-category="medicine">
+                <img
+                  src="image/medicine8.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Cetirizine</h5>
+                  <p class="card-text">$11.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    Cetirizine is an antihistamine that helps reduce allergy
+                    symptoms such as itching, runny nose, and watery eyes.
+                  </p>
+                  <button class="btn btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 6 -->
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+              <div class="card crd" data-category="medicine">
+                <img
+                  src="image/medicine6.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Omeprazole</h5>
+                  <p class="card-text">$14.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    Omeprazole is a proton pump inhibitor that reduces the
+                    amount of acid your stomach produces.
+                  </p>
+                  <button class="btn btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 7 -->
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+              <div class="card crd" data-category="medicine">
+                <img
+                  src="image/medicine7.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Metformin</h5>
+                  <p class="card-text">$7.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    Metformin is a prescription medication used to treat type 2
+                    diabetes. It helps control blood sugar levels .
+                  </p>
+                  <button class="btn btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 8 -->
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+              <div class="card crd" data-category="medicine">
+                <img
+                  src="image/medicine5.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Ciprofloxacin</h5>
+                  <p class="card-text">$13.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    Ciprofloxacin is a broad-spectrum antibiotic used to treat
+                    various bacterial infections, including urinary tract
+                    infections.
+                  </p>
+                  <button class="btn btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Skin & Hair Products Section-->
+      <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+        <div class="container section mt-4 p-5" id="skin-section">
+          <div id="product-list" class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+              <div class="card crd" data-category="skins">
+                <img
+                  src="image/skin1.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Vitamin C Serum</h5>
+                  <p class="card-text">$16.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    A powerful antioxidant that helps brighten skin, reduce the
+                    appearance of fine lines, and even out skin tone.
+                  </p>
+                  <button class="btn btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+              <div class="card crd" data-category="skins">
+                <img
+                  src="image/skin2.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Hyaluronic Acid Moisturizer</h5>
+                  <p class="card-text">$10.9</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    A powerful antioxidant that helps brighten skin, reduce the
+                    appearance of fine lines, and even out skin tone.
+                  </p>
+                  <button class="btn btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+              <div class="card crd" data-category="skins">
+                <img
+                  src="image/skin3.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Sunscreen SPF 50</h5>
+                  <p class="card-text">$12.7</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    A powerful antioxidant that helps brighten skin, reduce the
+                    appearance of fine lines, and even out skin tone.
+                  </p>
+                  <button class="btn btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="product-list" class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+              <div class="card crd" data-category="skins">
+                <img
+                  src="image/hair1.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Argan Oil Hair Serum</h5>
+                  <p class="card-text">$14.00</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    A powerful antioxidant that helps brighten skin, reduce the
+                    appearance of fine lines, and even out skin tone.
+                  </p>
+                  <button class="btn btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+              <div class="card crd" data-category="skins">
+                <img
+                  src="image/hair2.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Keratin Shampoo</h5>
+                  <p class="card-text">$21.90</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    A powerful antioxidant that helps brighten skin, reduce the
+                    appearance of fine lines, and even out skin tone.
+                  </p>
+                  <button class="btn btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+              <div class="card crd" data-category="skins">
+                <img
+                  src="image/hair3.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Biotin Hair Growth Conditioner</h5>
+                  <p class="card-text">$23.12</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    A powerful antioxidant that helps brighten skin, reduce the
+                    appearance of fine lines, and even out skin tone.
+                  </p>
+                  <button class="btn btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Vitamins Products Section-->
+      <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+        <div class="container section mt-4 p-5" id="vitamin-section">
+          <br />
+          <div id="product-list" class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+              <div class="card crd" data-category="vitamins">
+                <img
+                  src="image/vitamin1.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Vitamin C</h5>
+                  <p class="card-text">$16.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    A powerful antioxidant that helps brighten skin, reduce the
+                    appearance of fine lines, and even out skin tone.
+                  </p>
+                  <button class="btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+              <div class="card crd" data-category="vitamins">
+                <img
+                  src="image/vitamin2.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Vitamin D3</h5>
+                  <p class="card-text">$16.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    A powerful antioxidant that helps brighten skin, reduce the
+                    appearance of fine lines, and even out skin tone.
+                  </p>
+                  <button class="btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+              <div class="card crd" data-category="vitamins">
+                <img
+                  src="image/vitamin3.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Vitamin B12</h5>
+                  <p class="card-text">$16.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    A powerful antioxidant that helps brighten skin, reduce the
+                    appearance of fine lines, and even out skin tone.
+                  </p>
+                  <button class="btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="product-list" class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+              <div class="card crd" data-category="vitamins">
+                <img
+                  src="image/vitamin4.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Green Tea Extract</h5>
+                  <p class="card-text">$16.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    A powerful antioxidant that helps brighten skin, reduce the
+                    appearance of fine lines, and even out skin tone.
+                  </p>
+                  <button class="btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+              <div class="card crd" data-category="vitamins">
+                <img
+                  src="image/vitamin5.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Probiotics</h5>
+                  <p class="card-text">$16.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    A powerful antioxidant that helps brighten skin, reduce the
+                    appearance of fine lines, and even out skin tone.
+                  </p>
+                  <button class="btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+              <div class="card crd" data-category="vitamins">
+                <img
+                  src="image/vitamin6.webp"
+                  class="img-product"
+                  alt="product 1"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Omega-3 Fish Oil</h5>
+                  <p class="card-text">$16.99</p>
+                </div>
+                <div class="product-info">
+                  <p>
+                    A powerful antioxidant that helps brighten skin, reduce the
+                    appearance of fine lines, and even out skin tone.
+                  </p>
+                  <button class="btn-add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="content">
+        <div class="top">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+            Health<span>Hub</span>
+          </h5>
+          <div class="media-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="link-boxes">
+          <ul class="box">
+            <li class="link_name">Pharmaceutical Companies</li>
+            <li><a href="#">Pfizer</a></li>
+            <li><a href="#">AstraZeneca</a></li>
+            <li><a href="#">Johnson</a></li>
+            <li><a href="#">Novartis</a></li>
+          </ul>
+          <ul class="box">
+            <li class="link_name">Services</li>
+            <li><a href="#">Online Consultation</a></li>
+            <li><a href="#">Prescription Refill</a></li>
+            <li><a href="#">Medication Delivery</a></li>
+            <li><a href="#">Health Advice</a></li>
+          </ul>
+          <ul class="box">
+            <li class="link_name">Account</li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">My account</a></li>
+            <li><a href="#">Prefrences</a></li>
+            <li><a href="#">Purchase</a></li>
+          </ul>
+          <ul class="box">
+            <li class="link_name">Support</li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Customer Service</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Returns</a></li>
+          </ul>
+          <ul class="box input-box">
+            <li class="link_name">Subscribe</li>
+            <li><input type="text" placeholder="Enter your email" /></li>
+            <li><input type="button" value="Subscribe" /></li>
+          </ul>
+        </div>
+      </div>
+      <div class="bottom-details">
+        <div class="bottom_text">
+          <span class="copyright_text"
+            >Copyright © 2024 <a href="#">CodingStella </a>All rights
+            reserved</span
+          >
+          <span class="policy_terms">
+            <a href="#">Privacy policy</a>
+            <a href="#">Terms & condition</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+    <!--Lord Icon Script Link-->
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+
+      const products = [
+        {
+          name: "Paracetamol",
+          category: "Medicine",
+          price: 10.99,
+          imgSrc: "image/medicine1.png",
+        },
+        {
+          name: "Ibuprofen",
+          category: "Medicine",
+          price: 12.99,
+          imgSrc: "image/medicine2.png",
+        },
+        {
+          name: "Aspirin",
+          category: "Medicine",
+          price: 8.99,
+          imgSrc: "image/medicine3.png",
+        },
+        {
+          name: "Amoxicillin",
+          category: "Medicine",
+          price: 9.99,
+          imgSrc: "image/medicine4.png",
+        },
+        {
+          name: "Cetirizine",
+          category: "Medicine",
+          price: 11.99,
+          imgSrc: "image/medicine8.png",
+        },
+        {
+          name: "Omeprazole",
+          category: "Medicine",
+          price: 14.99,
+          imgSrc: "image/medicine6.png",
+        },
+        {
+          name: "Metformin",
+          category: "Medicine",
+          price: 7.99,
+          imgSrc: "image/medicine7.png",
+        },
+        {
+          name: "Ciprofloxacin",
+          category: "Medicine",
+          price: 13.99,
+          imgSrc: "image/medicine5.png",
+        },
+        {
+          name: "Vitamin C Serum",
+          category: "Skins",
+          price: 12,
+          imgSrc: "image/skin1.png",
+        },
+        {
+          name: "Hyaluronic Acid Moisturizer",
+          category: "Skins",
+          price: 23.12,
+          imgSrc: "image/skin2.png",
+        },
+        {
+          name: "Sunscreen SPF 50",
+          category: "Skins",
+          price: 29.3,
+          imgSrc: "image/skin3.png",
+        },
+        {
+          name: "Argan Oil Hair Serum",
+          category: "Skins",
+          price: 55.7,
+          imgSrc: "image/hair1.png",
+        },
+        {
+          name: "Keratin Shampoo",
+          category: "Skins",
+          price: 43.9,
+          imgSrc: "image/hair2.png",
+        },
+        {
+          name: "Biotin Hair Growth Conditioner",
+          category: "Skins",
+          price: 51.3,
+          imgSrc: "image/hair3.png",
+        },
+        {
+          name: "Vitamin C",
+          category: "Vitamins",
+          price: 24.6,
+          imgSrc: "image/vitamin1.png",
+        },
+        {
+          name: "Vitamin D3",
+          category: "Vitamins",
+          price: 36.5,
+          imgSrc: "image/vitamin2.png",
+        },
+        {
+          name: "Vitamin B12",
+          category: "Vitamins",
+          price: 32.23,
+          imgSrc: "image/vitamin3.png",
+        },
+        {
+          name: "Green Tea Extract",
+          category: "Vitamins",
+          price: 16.99,
+          imgSrc: "image/vitamin4.png",
+        },
+        {
+          name: "Probiotics",
+          category: "Vitamins",
+          price: 16.99,
+          imgSrc: "image/vitamin5.png",
+        },
+        {
+          name: "Omega-3 Fish Oil",
+          category: "Vitamins",
+          price: 16.99,
+          imgSrc: "image/vitamin6.png",
+        },
+      ];
+
+      // گرفتن همه کارت‌های محصولات
+      const productCards = document.querySelectorAll(".crd");
+
+      function filterProducts(category) {
+        productCards.forEach((card) => {
+          const productCategory = card.dataset.category; // گرفتن دسته‌بندی کارت
+          if (category === "all" || productCategory === category) {
+            card.classList.remove("d-none"); // نمایش کارت
+          } else {
+            card.classList.add("d-none"); // مخفی کردن کارت
+          }
+        });
+      }
+
+      // افزودن رویداد به دکمه‌های فیلتر
+      document
+        .getElementById("all-btn")
+        .addEventListener("click", () => filterProducts("all"));
+      document
+        .getElementById("popular-btn")
+        .addEventListener("click", () => filterProducts("popular"));
+      document
+        .getElementById("medicine-btn")
+        .addEventListener("click", () => filterProducts("medicine"));
+      document
+        .getElementById("skins-btn")
+        .addEventListener("click", () => filterProducts("skins"));
+      document
+        .getElementById("vitamins-btn")
+        .addEventListener("click", () => filterProducts("vitamins"));
+
+      // جستجوی محصولات
+      const searchInput = document.getElementById("search-input");
+      searchInput.addEventListener("input", function () {
+        const searchTerm = searchInput.value.toLowerCase();
+
+        productCards.forEach((card) => {
+          const productName = card
+            .querySelector(".card-title")
+            .textContent.toLowerCase();
+          if (productName.includes(searchTerm)) {
+            card.style.display = "block"; // نمایش محصول
+          } else {
+            card.style.display = "none"; // مخفی کردن محصول
+          }
+        });
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
